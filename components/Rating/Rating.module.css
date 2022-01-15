@@ -1,0 +1,12 @@
+.filled svg {
+  fill: var(--primary);
+}
+
+.starsWrapper {
+  display: flex;
+  gap: 5px;
+}
+
+.editable {
+  cursor: pointer;
+}
