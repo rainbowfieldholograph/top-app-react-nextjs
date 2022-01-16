@@ -1,6 +1,6 @@
 import { FooterProps } from './Footer.props'
 import styles from './Footer.module.css'
-import { Ptag } from '../Ptag/Ptag'
+import { Ptag } from '../../components/Ptag/Ptag'
 import { format } from 'date-fns'
 
 export const Footer = ({ className, ...rest }: FooterProps): JSX.Element => {

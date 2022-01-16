@@ -1,5 +1,5 @@
 import { MenuItem } from '../../interfaces/menu.interface'
-import { withLayout } from '../../Layout/Layout'
+import { withLayout } from '../../layout/Layout'
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { TopPageModel } from '../../interfaces/page.interface'

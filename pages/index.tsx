@@ -5,7 +5,7 @@ import { Htag } from '../components/Htag/Htag'
 import { Ptag } from '../components/Ptag/Ptag'
 import { Rating } from '../components/Rating/Rating'
 import { Tag } from '../components/Tag/Tag'
-import { withLayout } from '../Layout/Layout'
+import { withLayout } from '../layout/Layout'
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 
@@ -42,11 +42,6 @@ function Home({ menu }: HomeProps): JSX.Element {
         Gray m
       </Tag>
       <Rating rating={rating} setRating={setRating} isEditable={true} />
-      <ul>
-        {menu.map((m) => (
-          <li key={m._id.secondCategory}>{m._id.secondCategory}</li>
-        ))}
-      </ul>
     </>
   )
 }
