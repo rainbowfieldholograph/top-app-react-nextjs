@@ -4,8 +4,9 @@ import { Htag } from '../components/Htag/Htag'
 import { Ptag } from '../components/Ptag/Ptag'
 import { Rating } from '../components/Rating/Rating'
 import { Tag } from '../components/Tag/Tag'
+import { withLayout } from '../Layout/Layout'
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   const [rating, setRating] = useState<number>(0)
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function Home(): JSX.Element {
   }, [])
 
   return (
-    <div>
+    <>
       <Htag tag="h1">ahhahahha</Htag>
       <Button appearance="ghost" className="sdajhsdabks" arrow="right">
         Кнопка
@@ -38,6 +39,8 @@ export default function Home(): JSX.Element {
         Gray m
       </Tag>
       <Rating rating={rating} setRating={setRating} isEditable={true} />
-    </div>
+    </>
   )
 }
+
+export default withLayout(Home)

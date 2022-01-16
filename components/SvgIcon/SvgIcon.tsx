@@ -1,4 +1,3 @@
-import React from 'react'
 import { SvgIconProps } from './SvgIcon.props'
 
 export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
