@@ -1,0 +1,25 @@
+.firstLevel {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  color: gray;
+  margin-top: 20px;
+}
+
+.firstLevel svg {
+  fill: gray;
+}
+
+.active,
+.firstLevel:hover {
+  color: var(--primary);
+}
+
+.active svg,
+.firstLevel:hover svg {
+  fill: var(--primary);
+}
