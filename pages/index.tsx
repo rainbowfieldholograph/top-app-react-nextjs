@@ -1,22 +1,16 @@
 import { GetStaticProps } from 'next'
-import { useEffect, useState } from 'react'
-import { Button } from '../components/Button/Button'
-import { Htag } from '../components/Htag/Htag'
-import { Ptag } from '../components/Ptag/Ptag'
-import { Rating } from '../components/Rating/Rating'
-import { Tag } from '../components/Tag/Tag'
+import { useState } from 'react'
+import { Button } from '../components/button/Button'
+import { Htag } from '../components/htag/Htag'
+import { Ptag } from '../components/ptag/Ptag'
+import { Rating } from '../components/rating/Rating'
+import { Tag } from '../components/tag/Tag'
 import { withLayout } from '../layout/Layout'
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
-
-  useEffect(() => {
-    return function cleanup() {
-      console.log('unmount')
-    }
-  }, [])
 
   return (
     <>

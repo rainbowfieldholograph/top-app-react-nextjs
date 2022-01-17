@@ -1,5 +1,5 @@
 import { useEffect, useState, KeyboardEvent, Fragment } from 'react'
-import { SvgIcon } from '../SvgIcon/SvgIcon'
+import { SvgIcon } from '../svgIcon/SvgIcon'
 import { RatingProps } from './Rating.props'
 import styles from './Rating.module.css'
 

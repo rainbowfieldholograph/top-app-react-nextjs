@@ -1,4 +1,4 @@
-import { SvgIcon } from '../SvgIcon/SvgIcon'
+import { SvgIcon } from '../svgIcon/SvgIcon'
 import styles from './Button.module.css'
 import { ButtonProps } from './Button.props'
 

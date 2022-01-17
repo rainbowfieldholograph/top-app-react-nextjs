@@ -15,6 +15,14 @@
   border-left: 1px solid #dfdfdf;
 }
 
-.opened:last-child {
+.block {
+  display: none;
+}
+
+.blockOpened:last-child {
   margin-bottom: 20px;
+}
+
+.blockOpened {
+  display: block;
 }

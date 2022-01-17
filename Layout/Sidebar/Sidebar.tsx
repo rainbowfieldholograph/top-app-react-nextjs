@@ -1,12 +1,13 @@
-import { Menu } from '../../components/Menu/Menu'
+import { SvgIcon } from '../../components/svgIcon/SvgIcon'
+import { Menu } from '../menu/Menu'
 import styles from './Sidebar.module.css'
 import { SidebarProps } from './Sidebar.props'
 
-interface Props {}
-
-export const Sidebar = ({ ...rest }: SidebarProps): JSX.Element => {
+export const Sidebar = ({ className, ...rest }: SidebarProps): JSX.Element => {
   return (
-    <div {...rest}>
+    <div className={`${styles.sidebar} ${className}`} {...rest}>
+      <SvgIcon className={styles.logo} type="logo" />
+      <div>Поиск</div>
       <Menu />
     </div>
   )
