@@ -2,6 +2,7 @@ import { HhDataProps } from './HhData.props'
 import styles from './HhData.module.css'
 import { Card } from '../card/Card'
 import { HhLevelBlock } from '../hhLevelBlock/HhLevelBlock'
+import { LevelsEnum } from '../hhLevelBlock/HhLevelBlock.props'
 
 export const HhData = ({
   count,
@@ -16,9 +17,9 @@ export const HhData = ({
         <div className={styles.countValue}>{count}</div>
       </Card>
       <Card className={styles.salary}>
-        <HhLevelBlock rate={1} salary={juniorSalary} />
-        <HhLevelBlock rate={2} salary={middleSalary} />
-        <HhLevelBlock rate={3} salary={seniorSalary} />
+        <HhLevelBlock rate={LevelsEnum.Junior} salary={juniorSalary} />
+        <HhLevelBlock rate={LevelsEnum.Middle} salary={middleSalary} />
+        <HhLevelBlock rate={LevelsEnum.Senior} salary={seniorSalary} />
       </Card>
     </div>
   )

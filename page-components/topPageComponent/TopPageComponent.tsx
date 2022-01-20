@@ -6,6 +6,8 @@ import { HhData } from '../../components/hhData/HhData'
 import { TopLevelCategory } from '../../interfaces/page.interface'
 import { ProductAdvantages } from '../../components/productAdvantages/ProductAdvantages'
 import { Ptag } from '../../components/ptag/Ptag'
+import { Sort } from '../../components/sort/Sort'
+import { SortEnum } from '../../components/sort/Sort.props'
 
 export const TopPageComponent = ({
   page,
@@ -21,7 +23,7 @@ export const TopPageComponent = ({
             {products.length}
           </Tag>
         )}
-        <span>Сортировка</span>
+        <Sort sort={SortEnum.Rating} setSort={() => {}} />
       </div>
       <div>{products && products.map((p) => <div key={p._id}>{p.title}</div>)}</div>
       <div className={styles.hhTitle}>
@@ -34,7 +36,9 @@ export const TopPageComponent = ({
       {page.advantages && page.advantages.length > 0 && (
         <ProductAdvantages advantages={page.advantages} />
       )}
-      {page.seoText && <Ptag>{page.seoText}</Ptag>}
+      {page.seoText && (
+        <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />
+      )}
       <Htag tag="h2">Получаемые навыки</Htag>
       {page.tags.map((t) => (
         <Tag key={t} color="primary">

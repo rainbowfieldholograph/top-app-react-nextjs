@@ -11,4 +11,5 @@ export interface SvgIconProps extends SVGProps<SVGSVGElement> {
     | 'logo'
     | 'rate'
     | 'check'
+    | 'sort'
 }

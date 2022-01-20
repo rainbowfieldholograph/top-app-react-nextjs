@@ -128,6 +128,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           viewBox="0 0 50 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          {...rest}
         >
           <circle cx="25" cy="25" r="25" fill="#C8F8E4" />
           <g clipPath="url(#clip0_77_0)">
@@ -141,6 +142,21 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
               <rect width="24" height="24" fill="white" transform="translate(13 13)" />
             </clipPath>
           </defs>
+        </svg>
+      )
+    case 'sort':
+      return (
+        <svg
+          width="20"
+          height="13"
+          viewBox="0 0 20 13"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...rest}
+        >
+          <rect width="20" height="3" rx="1.5" fill="#7653FC" />
+          <rect y="5" width="14" height="3" rx="1.5" fill="#7653FC" />
+          <rect y="10" width="8" height="3" rx="1.5" fill="#7653FC" />
         </svg>
       )
   }

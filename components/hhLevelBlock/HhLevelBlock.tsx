@@ -1,13 +1,7 @@
-import { HhLevelsBlockProps } from './HhLevelBlock.props'
+import { HhLevelsBlockProps, LevelsEnum } from './HhLevelBlock.props'
 import styles from './HhLevelBlock.module.css'
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { priceRu } from '../../helpers/Helpers'
-
-const enum Levels {
-  Junior = 1,
-  Middle,
-  Senior,
-}
 
 export const HhLevelBlock = ({
   salary,
@@ -17,10 +11,10 @@ export const HhLevelBlock = ({
 }: HhLevelsBlockProps): JSX.Element => {
   let title: string = 'Начальный'
   switch (rate) {
-    case Levels.Middle:
+    case LevelsEnum.Middle:
       title = 'Средний'
       break
-    case Levels.Senior:
+    case LevelsEnum.Senior:
       title = 'Профессионал'
       break
   }
@@ -30,8 +24,8 @@ export const HhLevelBlock = ({
       <div className={styles.salaryValue}>{priceRu(salary)}</div>
       <div className={styles.rate}>
         <SvgIcon className={styles.filled} type="rate" />
-        <SvgIcon className={`${rate >= Levels.Middle && styles.filled}`} type="rate" />
-        <SvgIcon className={`${rate >= Levels.Senior && styles.filled}`} type="rate" />
+        <SvgIcon className={`${rate >= LevelsEnum.Middle && styles.filled}`} type="rate" />
+        <SvgIcon className={`${rate >= LevelsEnum.Senior && styles.filled}`} type="rate" />
       </div>
     </div>
   )
