@@ -1,6 +1,7 @@
 import { HhLevelsBlockProps } from './HhLevelBlock.props'
 import styles from './HhLevelBlock.module.css'
 import { SvgIcon } from '../svgIcon/SvgIcon'
+import { priceRu } from '../../helpers/Helpers'
 
 const enum Levels {
   Junior = 1,
@@ -26,7 +27,7 @@ export const HhLevelBlock = ({
   return (
     <div className={`${styles.wrapper} ${className}`} {...rest}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.salaryValue}>{salary}</div>
+      <div className={styles.salaryValue}>{priceRu(salary)}</div>
       <div className={styles.rate}>
         <SvgIcon className={styles.filled} type="rate" />
         <SvgIcon className={`${rate >= Levels.Middle && styles.filled}`} type="rate" />
