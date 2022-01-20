@@ -5,17 +5,11 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { TopLevelCategory, TopPageModel } from '../../interfaces/page.interface'
 import { ParsedUrlQuery } from 'querystring'
 import { ProductModel } from '../../interfaces/product.interface'
-import { firstLevelMenu } from '../../helpers/Helpers'
+import { firstLevelMenu } from '../../helpers/helpers'
 import { TopPageComponent } from '../../page-components/topPageComponent/TopPageComponent'
 
 const TopPage = ({ firstCategory, page, products }: TopPageProps): JSX.Element => {
-  return (
-    <TopPageComponent
-      firstCategory={firstCategory}
-      page={page}
-      products={products}
-    />
-  )
+  return <TopPageComponent firstCategory={firstCategory} page={page} products={products} />
 }
 
 export default withLayout(TopPage)

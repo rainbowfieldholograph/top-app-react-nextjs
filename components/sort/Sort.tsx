@@ -15,7 +15,7 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Ele
         onClick={() => setSort(SortEnum.Price)}
         className={`${sort === SortEnum.Price && styles.active}`}
       >
-        <SvgIcon className={styles.sortIcon} type="sort" /> По&nbsp;цене
+        <SvgIcon className={styles.sortIcon} type="sort" /> По цене
       </span>
     </div>
   )
