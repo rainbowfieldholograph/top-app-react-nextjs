@@ -1,7 +1,12 @@
 import { PtagProps } from './Ptag.props'
 import styles from './Ptag.module.css'
 
-export const Ptag = ({ size = 'medium', children, ...rest }: PtagProps): JSX.Element => {
+export const Ptag = ({
+  size = 'medium',
+  className,
+  children,
+  ...rest
+}: PtagProps): JSX.Element => {
   let ptagStyles
   switch (size) {
     case 'small':
@@ -17,7 +22,7 @@ export const Ptag = ({ size = 'medium', children, ...rest }: PtagProps): JSX.Ele
       break
   }
   return (
-    <p className={ptagStyles} {...rest}>
+    <p className={`${ptagStyles} ${className}`} {...rest}>
       {children}
     </p>
   )

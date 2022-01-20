@@ -1,0 +1,28 @@
+.wrapper {
+  text-align: center;
+}
+
+.title {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 10px;
+}
+
+.salaryValue {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 35px;
+  margin-bottom: 10px;
+}
+
+.rate {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 10px;
+  justify-content: center;
+}
+
+.filled circle {
+  fill: var(--red);
+}

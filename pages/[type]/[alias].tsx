@@ -6,12 +6,19 @@ import { TopLevelCategory, TopPageModel } from '../../interfaces/page.interface'
 import { ParsedUrlQuery } from 'querystring'
 import { ProductModel } from '../../interfaces/product.interface'
 import { firstLevelMenu } from '../../helpers/Helpers'
+import { TopPageComponent } from '../../page-components/topPageComponent/TopPageComponent'
 
-const Course = ({ menu, page, products }: CourseProps): JSX.Element => {
-  return <>{products && products.length}</>
+const TopPage = ({ firstCategory, page, products }: TopPageProps): JSX.Element => {
+  return (
+    <TopPageComponent
+      firstCategory={firstCategory}
+      page={page}
+      products={products}
+    />
+  )
 }
 
-export default withLayout(Course)
+export default withLayout(TopPage)
 
 export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[] = []
@@ -20,7 +27,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
       process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
       { firstCategory: m.id }
     )
-    paths = paths.concat(menu.flatMap((mItem) => mItem.pages.map((p) => `/${m.route}/${p.alias}`)))
+    paths = paths.concat(
+      menu.flatMap((mItem) => mItem.pages.map((p) => `/${m.route}/${p.alias}`))
+    )
   }
   console.log('PATHS: ', paths)
   return {
@@ -29,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps<CourseProps> = async ({
+export const getStaticProps: GetStaticProps<TopPageProps> = async ({
   params,
 }: GetStaticPropsContext<ParsedUrlQuery>) => {
   if (!params) {
@@ -74,7 +83,7 @@ export const getStaticProps: GetStaticProps<CourseProps> = async ({
     }
   }
 }
-interface CourseProps extends Record<string, unknown> {
+interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[]
   firstCategory: TopLevelCategory
   page: TopPageModel
