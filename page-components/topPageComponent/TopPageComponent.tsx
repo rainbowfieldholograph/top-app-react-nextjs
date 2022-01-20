@@ -4,6 +4,8 @@ import { TopPageComponentProps } from './TopPageComponent.props'
 import styles from './TopPageComponent.module.css'
 import { HhData } from '../../components/hhData/HhData'
 import { TopLevelCategory } from '../../interfaces/page.interface'
+import { ProductAdvantages } from '../../components/productAdvantages/ProductAdvantages'
+import { Ptag } from '../../components/ptag/Ptag'
 
 export const TopPageComponent = ({
   page,
@@ -28,7 +30,17 @@ export const TopPageComponent = ({
           hh.ru
         </Tag>
       </div>
-      {firstCategory == TopLevelCategory.Courses && <HhData {...page.hh} />}
+      {firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh} />}
+      {page.advantages && page.advantages.length > 0 && (
+        <ProductAdvantages advantages={page.advantages} />
+      )}
+      {page.seoText && <Ptag>{page.seoText}</Ptag>}
+      <Htag tag="h2">Получаемые навыки</Htag>
+      {page.tags.map((t) => (
+        <Tag key={t} color="primary">
+          {t}
+        </Tag>
+      ))}
     </div>
   )
 }
