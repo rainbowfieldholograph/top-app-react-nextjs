@@ -1,0 +1,15 @@
+.textarea {
+  background: var(--white);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  resize: none;
+  padding: 7px 12px;
+}
+
+.textarea:focus {
+  outline: 2px solid var(--primary);
+}
+
+.textarea::placeholder {
+  color: var(--gray);
+}

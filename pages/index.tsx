@@ -9,6 +9,7 @@ import { withLayout } from '../layout/Layout'
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 import { Input } from '../components/input/Input'
+import { Textarea } from '../components/textarea/Textarea'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
@@ -38,6 +39,7 @@ function Home({ menu }: HomeProps): JSX.Element {
       </Tag>
       <Rating rating={rating} setRating={setRating} isEditable={true} />
       <Input placeholder="ok" />
+      <Textarea />
     </>
   )
 }
