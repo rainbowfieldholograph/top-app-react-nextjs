@@ -22,7 +22,7 @@ export const Ptag = ({
       break
   }
   return (
-    <p className={`${ptagStyles} ${className}`} {...rest}>
+    <p className={[ptagStyles, className].join(' ')} {...rest}>
       {children}
     </p>
   )

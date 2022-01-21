@@ -11,17 +11,19 @@ export const Button = ({
 }: ButtonProps): JSX.Element => {
   return (
     <button
-      className={`${styles.button} ${className} 
-        ${appearance === 'ghost' && styles.primary} 
-        ${appearance === 'primary' && styles.ghost}
-  `}
+      className={[
+        styles.button,
+        className,
+        appearance === 'ghost' ? styles.ghost : '',
+        appearance === 'primary' ? styles.primary : '',
+      ].join(' ')}
       {...rest}
     >
       {children}
       {arrow !== 'none' && (
         <span
           className={`${styles.arrow} 
-            ${arrow == 'down' && styles.down}`}
+            ${arrow === 'down' ? styles.down : ''}`}
         >
           <SvgIcon type="arrow" />
         </span>

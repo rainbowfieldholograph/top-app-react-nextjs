@@ -17,7 +17,7 @@ function Home({ menu }: HomeProps): JSX.Element {
   return (
     <>
       <Htag tag="h1">ahhahahha</Htag>
-      <Button appearance="ghost" className="sdajhsdabks" arrow="right">
+      <Button appearance="ghost" className="sdajhsdabks">
         Кнопка
       </Button>
       <Button appearance="primary" arrow="right">

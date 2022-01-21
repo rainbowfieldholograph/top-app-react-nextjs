@@ -1,3 +1,4 @@
+import { Search } from '../../components/search/Search'
 import { SvgIcon } from '../../components/svgIcon/SvgIcon'
 import { Menu } from '../menu/Menu'
 import styles from './Sidebar.module.css'
@@ -7,7 +8,7 @@ export const Sidebar = ({ className, ...rest }: SidebarProps): JSX.Element => {
   return (
     <div className={`${styles.sidebar} ${className}`} {...rest}>
       <SvgIcon className={styles.logo} type="logo" />
-      <div>Поиск</div>
+      <Search />
       <Menu />
     </div>
   )
