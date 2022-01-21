@@ -1,5 +1,5 @@
 import { TopPageAdvantage } from '../../interfaces/page.interface'
 
-export interface ProductAdvantagesProps {
+export interface AdvantagesProps {
   advantages: TopPageAdvantage[]
 }

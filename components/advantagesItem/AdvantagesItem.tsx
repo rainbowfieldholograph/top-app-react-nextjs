@@ -1,11 +1,8 @@
 import { SvgIcon } from '../svgIcon/SvgIcon'
-import styles from './ProductAdvantagesItem.module.css'
-import { ProductBenefitsItemProps } from './ProductAdvantagesItem.props'
+import styles from './AdvantagesItem.module.css'
+import { AdventuresItemProps } from './AdvantagesItem.props'
 
-export const ProductAdvantagesItem = ({
-  title,
-  descr,
-}: ProductBenefitsItemProps): JSX.Element => {
+export const AdvantagesItem = ({ title, descr }: AdventuresItemProps): JSX.Element => {
   return (
     <div className={styles.advantage}>
       <SvgIcon type="check" />

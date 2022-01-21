@@ -4,12 +4,12 @@ import { TopPageComponentProps } from './TopPageComponent.props'
 import styles from './TopPageComponent.module.css'
 import { HhData } from '../../components/hhData/HhData'
 import { TopLevelCategory } from '../../interfaces/page.interface'
-import { ProductAdvantages } from '../../components/productAdvantages/ProductAdvantages'
-import { Ptag } from '../../components/ptag/Ptag'
+import { Advantages } from '../../components/advantages/Advantages'
 import { Sort } from '../../components/sort/Sort'
 import { SortEnum } from '../../components/sort/Sort.props'
 import { useReducer } from 'react'
 import { sortReducer } from './sort.reducer'
+import { Product } from '../../components/product/Product'
 
 export const TopPageComponent = ({
   page,
@@ -37,7 +37,7 @@ export const TopPageComponent = ({
         <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+        {sortedProducts && sortedProducts.map((p) => <Product key={p._id} product={p} />)}
       </div>
       <div className={styles.hhTitle}>
         <Htag tag="h2">Вакансии - {page.category}</Htag>
@@ -47,7 +47,7 @@ export const TopPageComponent = ({
       </div>
       {firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh} />}
       {page.advantages && page.advantages.length > 0 && (
-        <ProductAdvantages advantages={page.advantages} />
+        <Advantages advantages={page.advantages} />
       )}
       {page.seoText && (
         <div className={styles.seo} dangerouslySetInnerHTML={{ __html: page.seoText }} />
