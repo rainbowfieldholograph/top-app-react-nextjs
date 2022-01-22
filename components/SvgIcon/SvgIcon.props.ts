@@ -14,4 +14,5 @@ export interface SvgIconProps extends SVGProps<SVGSVGElement> {
     | 'sort'
     | 'glass'
     | 'user'
+    | 'close'
 }

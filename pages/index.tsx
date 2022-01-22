@@ -10,6 +10,7 @@ import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 import { Input } from '../components/input/Input'
 import { Textarea } from '../components/textarea/Textarea'
+import { ReviewForm } from '../components/reviewForm/ReviewForm'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)

@@ -138,6 +138,10 @@
   margin-bottom: 10px;
 }
 
+.characteristicsValue {
+  text-align: end;
+}
+
 .closed {
   overflow: hidden;
   max-height: 0;

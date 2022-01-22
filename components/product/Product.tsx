@@ -7,8 +7,9 @@ import { Button } from '../button/Button'
 import { declOfNum, priceRu } from '../../helpers/helpers'
 import { Divider } from '../divider/Divider'
 import Image from 'next/image'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { Review } from '../review/Review'
+import { ReviewForm } from '../reviewForm/ReviewForm'
 
 export const Product = ({ product, className, ...rest }: ProductProps): JSX.Element => {
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
@@ -94,8 +95,12 @@ export const Product = ({ product, className, ...rest }: ProductProps): JSX.Elem
         className={[styles.reviews, isReviewOpened ? styles.opened : styles.closed].join(' ')}
       >
         {product.reviews.map((r) => (
-          <Review key={r._id} review={r} />
+          <Fragment key={r._id}>
+            <Review review={r} />
+            <Divider />
+          </Fragment>
         ))}
+        <ReviewForm productId={product._id} />
       </Card>
     </>
   )
