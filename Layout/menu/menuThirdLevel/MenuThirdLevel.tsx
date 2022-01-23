@@ -7,11 +7,15 @@ export const MenuThirdLevel = ({ pages, route }: MenuThirdLevelProps): JSX.Eleme
   const router = useRouter()
   return (
     <>
-      {pages.map((p, index) => {
+      {pages.map((p) => {
         const routePath = `/${route}/${p.alias}`
         return (
-          <Link key={index} href={routePath}>
-            <a className={`${styles.thirdLevel} ${routePath === router.asPath && styles.active}`}>
+          <Link key={p._id} href={routePath}>
+            <a
+              className={`${styles.thirdLevel} ${
+                routePath === router.asPath && styles.active
+              }`}
+            >
               {p.category}
             </a>
           </Link>

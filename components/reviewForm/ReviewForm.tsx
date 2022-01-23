@@ -5,26 +5,53 @@ import { Rating } from '../rating/Rating'
 import { Textarea } from '../textarea/Textarea'
 import { Button } from '../button/Button'
 import { SvgIcon } from '../svgIcon/SvgIcon'
+import { useForm, Controller } from 'react-hook-form'
+import { IReviewForm } from './ReviewForm.interface'
 
 export const ReviewForm = ({
   productId,
   className,
   ...rest
 }: ReviewFormProps): JSX.Element => {
+  const { register, control, handleSubmit } = useForm<IReviewForm>()
+
+  const onSubmit = (data: IReviewForm) => {
+    console.log(data)
+  }
+
   return (
-    <>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className={[styles.reviewForm, className].join(' ')} {...rest}>
         <div>
-          <Input className={styles.input} placeholder="Имя" />
+          <Input className={styles.input} {...register('name')} placeholder="Имя" />
         </div>
-        <div className={styles.title}>
-          <Input placeholder="Заголовок отзыва" className={styles.input} />
+        <div>
+          <Input
+            {...register('title')}
+            placeholder="Заголовок отзыва"
+            className={styles.input}
+          />
         </div>
         <div className={styles.rating}>
           <span>Оценка:</span>
-          <Rating rating={0} />
+          <Controller
+            control={control}
+            name="rating"
+            render={({ field }) => (
+              <Rating
+                ref={field.ref}
+                isEditable
+                rating={field.value}
+                setRating={field.onChange}
+              />
+            )}
+          />
         </div>
-        <Textarea placeholder="Текст отзыва" className={styles.description} />
+        <Textarea
+          {...register('description')}
+          placeholder="Текст отзыва"
+          className={styles.description}
+        />
         <div className={styles.submit}>
           <Button appearance="primary">Отправить</Button>
           <span className={styles.info}>
@@ -37,6 +64,6 @@ export const ReviewForm = ({
         <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
         <SvgIcon type="close" className={styles.close} />
       </div>
-    </>
+    </form>
   )
 }

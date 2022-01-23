@@ -95,10 +95,10 @@ export const Product = ({ product, className, ...rest }: ProductProps): JSX.Elem
         className={[styles.reviews, isReviewOpened ? styles.opened : styles.closed].join(' ')}
       >
         {product.reviews.map((r) => (
-          <Fragment key={r._id}>
+          <div key={r._id}>
             <Review review={r} />
             <Divider />
-          </Fragment>
+          </div>
         ))}
         <ReviewForm productId={product._id} />
       </Card>

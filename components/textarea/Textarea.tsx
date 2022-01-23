@@ -1,6 +1,12 @@
 import { TextareaProps } from './Textarea.props'
 import styles from './Textarea.module.css'
+import { ForwardedRef, forwardRef } from 'react'
 
-export const Textarea = ({ className, ...rest }: TextareaProps): JSX.Element => {
-  return <textarea className={`${styles.textarea} ${className}`} {...rest} />
-}
+export const Textarea = forwardRef(
+  (
+    { className, ...rest }: TextareaProps,
+    ref: ForwardedRef<HTMLTextAreaElement>
+  ): JSX.Element => {
+    return <textarea className={`${styles.textarea} ${className}`} ref={ref} {...rest} />
+  }
+)
