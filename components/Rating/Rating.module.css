@@ -2,11 +2,23 @@
   fill: var(--primary);
 }
 
-.starsWrapper {
-  display: flex;
-  gap: 5px;
+.wrapper {
+  position: relative;
 }
 
 .editable {
   cursor: pointer;
+}
+
+.error svg {
+  stroke: var(--red);
+}
+
+.errorMsg {
+  position: absolute;
+  bottom: -20px;
+  left: 100%;
+  transform: translateX(-100%);
+  color: var(--red);
+  white-space: nowrap;
 }

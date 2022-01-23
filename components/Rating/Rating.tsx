@@ -7,7 +7,7 @@ const MAX_STAR_COUNT = 5
 
 export const Rating = forwardRef(
   (
-    { isEditable = false, rating, setRating, className, ...rest }: RatingProps,
+    { isEditable = false, rating, setRating, error, className, ...rest }: RatingProps,
     ref: ForwardedRef<HTMLDivElement>
   ): JSX.Element => {
     const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
@@ -22,10 +22,11 @@ export const Rating = forwardRef(
       const updatedArray = ratingArray.map((r: JSX.Element, index: number) => {
         return (
           <span
-            className={`
-            ${styles.star}
-            ${index < currentRating && styles.filled} 
-            ${isEditable && styles.editable}`}
+            className={[
+              styles.star,
+              index < currentRating && styles.filled,
+              isEditable && styles.editable,
+            ].join(' ')}
             onMouseEnter={() => changeDisplay(index + 1)}
             onMouseLeave={() => changeDisplay(rating)}
             onClick={() => onClickStar(index + 1)}
@@ -61,10 +62,17 @@ export const Rating = forwardRef(
     }
 
     return (
-      <div className={`${styles.starsWrapper} ${className}`} ref={ref} {...rest}>
-        {ratingArray.map((rating, index) => (
-          <Fragment key={index}>{rating}</Fragment>
-        ))}
+      <div className={styles.wrapper}>
+        <div
+          className={[styles.starsWrapper, className, error && styles.error].join(' ')}
+          ref={ref}
+          {...rest}
+        >
+          {ratingArray.map((rating, index) => (
+            <Fragment key={index}>{rating}</Fragment>
+          ))}
+        </div>
+        {error && <span className={styles.errorMsg}>{error.message}</span>}
       </div>
     )
   }

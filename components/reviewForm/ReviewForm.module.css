@@ -61,3 +61,7 @@
     grid-template-columns: [start] 100% [end];
   }
 }
+
+.errorText {
+  color: var(--red);
+}

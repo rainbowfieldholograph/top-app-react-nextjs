@@ -42,17 +42,21 @@ export const ReviewForm = ({
           className={styles.input}
         />
         <div className={styles.rating}>
-          <span>Оценка:</span>
           <Controller
             control={control}
             name="rating"
+            rules={{ required: { value: true, message: 'Поставьте оценку' } }}
             render={({ field }) => (
-              <Rating
-                ref={field.ref}
-                isEditable
-                rating={field.value}
-                setRating={field.onChange}
-              />
+              <>
+                <span className={errors.rating && styles.errorText}>Оценка:</span>
+                <Rating
+                  ref={field.ref}
+                  isEditable
+                  rating={field.value}
+                  setRating={field.onChange}
+                  error={errors.rating}
+                />
+              </>
             )}
           />
         </div>
