@@ -7,6 +7,7 @@
   border-radius: 5px;
   font-size: 16px;
   line-height: 22px;
+  width: 100%;
 }
 
 .input:focus {
@@ -15,4 +16,23 @@
 
 .input::placeholder {
   color: var(--gray);
+}
+
+.error {
+  border: 1px solid var(--red) !important;
+}
+
+.error:focus {
+  outline: 2px solid var(--red) !important;
+}
+
+.errorMsg {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: var(--red);
+}
+
+.wrapper {
+  position: relative;
 }

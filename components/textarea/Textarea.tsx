@@ -4,9 +4,18 @@ import { ForwardedRef, forwardRef } from 'react'
 
 export const Textarea = forwardRef(
   (
-    { className, ...rest }: TextareaProps,
+    { className, error, ...rest }: TextareaProps,
     ref: ForwardedRef<HTMLTextAreaElement>
   ): JSX.Element => {
-    return <textarea className={`${styles.textarea} ${className}`} ref={ref} {...rest} />
+    return (
+      <div className={[styles.wrapper, className].join(' ')}>
+        <textarea
+          className={[styles.textarea, error && styles.error].join(' ')}
+          ref={ref}
+          {...rest}
+        />
+        {error && <span className={styles.errorMsg}>{error.message}</span>}
+      </div>
+    )
   }
 )

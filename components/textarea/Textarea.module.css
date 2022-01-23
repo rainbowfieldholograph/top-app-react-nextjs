@@ -4,6 +4,7 @@
   border-radius: 5px;
   resize: none;
   padding: 7px 12px;
+  width: 100%;
 }
 
 .textarea:focus {
@@ -12,4 +13,23 @@
 
 .textarea::placeholder {
   color: var(--gray);
+}
+
+.error {
+  border: 1px solid var(--red) !important;
+}
+
+.error:focus {
+  outline: 2px solid var(--red) !important;
+}
+
+.errorMsg {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  color: var(--red);
+}
+
+.wrapper {
+  position: relative;
 }
