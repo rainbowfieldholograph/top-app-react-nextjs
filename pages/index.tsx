@@ -12,12 +12,14 @@ import { Input } from '../components/input/Input'
 import { Textarea } from '../components/textarea/Textarea'
 import { ReviewForm } from '../components/reviewForm/ReviewForm'
 import { API } from '../helpers/api'
+import { Up } from '../components/up/Up'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
 
   return (
     <>
+      <Up />
       <Htag tag="h1">ahhahahha</Htag>
       <Button appearance="ghost" className="sdajhsdabks">
         Кнопка
