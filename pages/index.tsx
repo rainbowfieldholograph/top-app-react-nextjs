@@ -11,6 +11,7 @@ import { MenuItem } from '../interfaces/menu.interface'
 import { Input } from '../components/input/Input'
 import { Textarea } from '../components/textarea/Textarea'
 import { ReviewForm } from '../components/reviewForm/ReviewForm'
+import { API } from '../helpers/api'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
@@ -49,10 +50,7 @@ export default withLayout(Home)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-    { firstCategory }
-  )
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, { firstCategory })
   return {
     props: {
       menu,

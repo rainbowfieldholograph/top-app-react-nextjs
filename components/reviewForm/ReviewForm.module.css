@@ -25,10 +25,6 @@
 
 .success {
   background-color: var(--green-light);
-  padding: 20px;
-  position: relative;
-  border-radius: 5px;
-  margin-top: 20px;
 }
 
 .successTitle {
@@ -46,6 +42,25 @@
   width: 100%;
 }
 
+.panel {
+  padding: 20px;
+  position: relative;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.error {
+  background-color: var(--red-light);
+}
+
+.errorText {
+  color: var(--red);
+}
+
+.error .close line {
+  stroke: var(--red);
+}
+
 @media (max-width: 1100px) {
   .reviewForm {
     grid-template-columns: [start] 1fr 1fr [end];
@@ -60,8 +75,4 @@
   .reviewForm {
     grid-template-columns: [start] 100% [end];
   }
-}
-
-.errorText {
-  color: var(--red);
 }

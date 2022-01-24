@@ -14,7 +14,7 @@ import { ReviewForm } from '../reviewForm/ReviewForm'
 export const Product = ({ product, className, ...rest }: ProductProps): JSX.Element => {
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
   return (
-    <>
+    <div>
       <Card className={[styles.product, className].join(' ')}>
         <div className={styles.logo}>
           <Image
@@ -102,6 +102,6 @@ export const Product = ({ product, className, ...rest }: ProductProps): JSX.Elem
         ))}
         <ReviewForm productId={product._id} />
       </Card>
-    </>
+    </div>
   )
 }

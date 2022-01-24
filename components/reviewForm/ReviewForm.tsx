@@ -6,7 +6,10 @@ import { Textarea } from '../textarea/Textarea'
 import { Button } from '../button/Button'
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { useForm, Controller } from 'react-hook-form'
-import { IReviewForm } from './ReviewForm.interface'
+import { IReviewForm, IReviewSentResponse } from './ReviewForm.interface'
+import axios from 'axios'
+import { API } from '../../helpers/api'
+import { useState } from 'react'
 
 export const ReviewForm = ({
   productId,
@@ -18,10 +21,30 @@ export const ReviewForm = ({
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<IReviewForm>()
 
-  const onSubmit = (data: IReviewForm) => {
-    console.log(data)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>()
+
+  const onSubmit = async (formData: IReviewForm) => {
+    try {
+      const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, {
+        ...formData,
+        productId,
+      })
+
+      if (data.message) {
+        setIsSuccess(true)
+        reset()
+      } else {
+        setErrorMessage('Что-то пошло не так')
+      }
+    } catch (error) {
+      error instanceof Error
+        ? setErrorMessage(error.message)
+        : setErrorMessage(`Неизвестная ошибка. ${error}`)
+    }
   }
 
   return (
@@ -75,11 +98,23 @@ export const ReviewForm = ({
           </span>
         </div>
       </div>
-      <div className={styles.success}>
-        <div className={styles.successTitle}>Ваш отзыв отправлен</div>
-        <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
-        <SvgIcon type="close" className={styles.close} />
-      </div>
+      {isSuccess && (
+        <div className={[styles.success, styles.panel].join(' ')}>
+          <div className={styles.successTitle}>Ваш отзыв отправлен</div>
+          <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
+          <SvgIcon onClick={() => setIsSuccess(false)} type="close" className={styles.close} />
+        </div>
+      )}
+      {errorMessage && (
+        <div className={[styles.error, styles.panel].join(' ')}>
+          Что-то пошло не так, попробуйте обновить страницу
+          <SvgIcon
+            onClick={() => setErrorMessage(undefined)}
+            type="close"
+            className={styles.close}
+          />
+        </div>
+      )}
     </form>
   )
 }
