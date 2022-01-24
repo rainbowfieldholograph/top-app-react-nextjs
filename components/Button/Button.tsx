@@ -1,4 +1,5 @@
 import { SvgIcon } from '../svgIcon/SvgIcon'
+import { IconTypes } from '../svgIcon/SvgIcon.props'
 import styles from './Button.module.css'
 import { ButtonProps } from './Button.props'
 
@@ -21,11 +22,8 @@ export const Button = ({
     >
       {children}
       {arrow !== 'none' && (
-        <span
-          className={`${styles.arrow} 
-            ${arrow === 'down' ? styles.down : ''}`}
-        >
-          <SvgIcon type="arrow" />
+        <span className={[styles.arrow, arrow === 'down' ? styles.down : ''].join(' ')}>
+          <SvgIcon iconType={IconTypes.arrow} />
         </span>
       )}
     </button>

@@ -1,8 +1,8 @@
-import { SvgIconProps } from './SvgIcon.props'
+import { IconTypes, SvgIconProps } from './SvgIcon.props'
 
-export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
-  switch (type) {
-    case 'arrow':
+export const SvgIcon = ({ iconType, ...rest }: SvgIconProps): JSX.Element => {
+  switch (iconType) {
+    case IconTypes.arrow:
       return (
         <svg
           width="6"
@@ -15,7 +15,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M5.7154 4.6098L1.26527 0.159755C1.16235 0.0567475 1.02495 0 0.878448 0C0.731945 0 0.594548 0.0567475 0.491622 0.159755L0.163901 0.487394C-0.0493491 0.700889 -0.0493491 1.04788 0.163901 1.26105L3.90078 4.99793L0.159755 8.73895C0.0568288 8.84196 0 8.97928 0 9.1257C0 9.27228 0.0568288 9.4096 0.159755 9.51269L0.487476 9.84025C0.590483 9.94325 0.727799 10 0.874302 10C1.0208 10 1.1582 9.94325 1.26113 9.84025L5.7154 5.38614C5.81857 5.2828 5.87524 5.14484 5.87491 4.99817C5.87524 4.85094 5.81857 4.71305 5.7154 4.6098Z" />
         </svg>
       )
-    case 'star':
+    case IconTypes.star:
       return (
         <svg
           width="20"
@@ -28,7 +28,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M19.9477 7.55686C19.816 7.13427 19.4568 6.83508 19.0335 6.79511L13.2601 6.24816L10.9784 0.673859C10.81 0.264321 10.4267 0 10 0C9.57337 0 9.18991 0.264321 9.02252 0.673859L6.74084 6.24816L0.966519 6.79511C0.543233 6.83587 0.184799 7.13507 0.0523506 7.55686C-0.0793348 7.97946 0.0422796 8.44298 0.362414 8.73596L4.72665 12.7293L3.43985 18.6434C3.34571 19.0782 3.50745 19.5279 3.85322 19.7887C4.03908 19.9296 4.25743 20 4.47655 20C4.66485 20 4.8533 19.9478 5.0216 19.8427L10 16.7364L14.9775 19.8427C15.3427 20.0704 15.8018 20.0495 16.1468 19.7887C16.4926 19.5279 16.6543 19.0782 16.5602 18.6434L15.2734 12.7293L19.6376 8.73596C19.9576 8.44298 20.0794 7.98041 19.9477 7.55686Z" />
         </svg>
       )
-    case 'courses':
+    case IconTypes.courses:
       return (
         <svg
           width="24"
@@ -42,7 +42,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M24 16.4055C24 15.4901 23.4104 14.7169 22.5938 14.4257V7.14159L24 6.56179L12 1.74707L0 6.56179L12 11.3766L21.1875 7.70624V14.4257C20.3708 14.7169 19.7812 15.4901 19.7812 16.4055C19.7812 17.2437 20.2762 17.9631 20.986 18.3031L19.8177 21.8081L21.1511 22.253L21.8906 20.0345L22.6301 22.253L23.9636 21.8081L22.7953 18.3031C23.505 17.9632 24 17.2437 24 16.4055Z" />
         </svg>
       )
-    case 'services':
+    case IconTypes.services:
       return (
         <svg
           width="24"
@@ -55,7 +55,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M19.6537 8.76156C19.7086 8.47062 19.7363 8.17386 19.7363 7.875C19.7363 5.18678 17.4891 3 14.7266 3C12.9631 3 11.3286 3.91408 10.4306 5.36661C9.21834 4.9842 7.97459 5.14818 6.94992 5.8353C5.92526 6.52188 5.3137 7.60893 5.26423 8.79753C3.9172 9.42012 3 10.7457 3 12.2083C3 12.4622 3.0632 12.7098 3.11155 12.9499L3.11211 12.9505C3.47199 14.7178 5.07939 16 6.93359 16H18.0664C20.2147 16 22 14.2988 22 12.2083C22 10.7299 21.0703 9.39896 19.6537 8.76156Z" />
         </svg>
       )
-    case 'books':
+    case IconTypes.books:
       return (
         <svg
           width="24"
@@ -71,7 +71,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M3.23448 14.4808V6.06976H2.71556C2.32108 6.06976 2 6.37069 2 6.74054V17.4024C2 17.6076 2.09805 17.7986 2.26896 17.9264C2.44034 18.0545 2.66135 18.1019 2.87576 18.0561C4.59024 17.6898 7.59867 17.264 10.4523 17.919C8.80231 16.4551 6.47247 16.1962 5.05947 16.193C4.05321 16.1908 3.23448 15.4227 3.23448 14.4808Z" />
         </svg>
       )
-    case 'product':
+    case IconTypes.product:
       return (
         <svg
           width="24"
@@ -87,7 +87,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M20.991 7.71161L12.6885 11.5546L12.6795 19.6771L21 15.6043L20.991 7.71161Z" />
         </svg>
       )
-    case 'logo':
+    case IconTypes.logo:
       return (
         <svg
           width="159"
@@ -104,7 +104,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M27.5 16.6835L28.5103 19.2744H31.7798L29.1347 20.8758L30.145 23.4667L27.5 21.8654L24.855 23.4667L25.8653 20.8758L23.2202 19.2744H26.4897L27.5 16.6835Z" />
         </svg>
       )
-    case 'rate':
+    case IconTypes.rate:
       return (
         <svg
           width="20"
@@ -120,7 +120,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           />
         </svg>
       )
-    case 'check':
+    case IconTypes.check:
       return (
         <svg
           width="50"
@@ -144,7 +144,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           </defs>
         </svg>
       )
-    case 'sort':
+    case IconTypes.sort:
       return (
         <svg
           width="20"
@@ -159,7 +159,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <rect y="10" width="8" height="3" rx="1.5" fill="#7653FC" />
         </svg>
       )
-    case 'glass':
+    case IconTypes.glass:
       return (
         <svg
           width="15"
@@ -172,7 +172,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M14.7719 13.6626L11.0742 9.94962C12.0249 8.85844 12.5459 7.48552 12.5459 6.05624C12.5459 2.71688 9.73177 0 6.27293 0C2.81409 0 0 2.71688 0 6.05624C0 9.3956 2.81409 12.1125 6.27293 12.1125C7.57143 12.1125 8.80883 11.7344 9.86677 11.0166L13.5926 14.7578C13.7484 14.9139 13.9578 15 14.1823 15C14.3947 15 14.5963 14.9218 14.7493 14.7796C15.0744 14.4776 15.0848 13.9768 14.7719 13.6626ZM6.27293 1.57989C8.82956 1.57989 10.9094 3.58793 10.9094 6.05624C10.9094 8.52456 8.82956 10.5326 6.27293 10.5326C3.7163 10.5326 1.63642 8.52456 1.63642 6.05624C1.63642 3.58793 3.7163 1.57989 6.27293 1.57989Z" />
         </svg>
       )
-    case 'user':
+    case IconTypes.user:
       return (
         <svg
           width="30"
@@ -187,7 +187,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           <path d="M15 5.38257C11.5955 5.38257 8.82587 8.17005 8.82587 11.5963C8.82587 15.0225 11.5955 17.81 15 17.81C18.4045 17.81 21.1741 15.0225 21.1741 11.5963C21.1741 8.17011 18.4045 5.38257 15 5.38257ZM15 15.4353C12.9052 15.4353 11.2006 13.7133 11.2006 11.5963C11.2006 9.47921 12.9052 7.7572 15 7.7572C17.0949 7.7572 18.7995 9.47962 18.7995 11.5963C18.7995 13.7129 17.0949 15.4353 15 15.4353Z" />
         </svg>
       )
-    case 'close':
+    case IconTypes.close:
       return (
         <svg
           width="12"
@@ -215,7 +215,7 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
           />
         </svg>
       )
-    case 'up':
+    case IconTypes.up:
       return (
         <svg
           width="21"
@@ -237,6 +237,47 @@ export const SvgIcon = ({ type, ...rest }: SvgIconProps): JSX.Element => {
             d="M9.06069 1.23228C9.64647 0.646496 10.5962 0.646496 11.182 1.23228L18.9602 9.01046C19.546 9.59624 19.546 10.546 18.9602 11.1318C18.3744 11.7176 17.4246 11.7176 16.8389 11.1318L9.06069 3.3536C8.4749 2.76782 8.4749 1.81807 9.06069 1.23228Z"
             fill="white"
           />
+        </svg>
+      )
+    case IconTypes.closeAlt:
+      return (
+        <svg
+          width="19"
+          height="19"
+          viewBox="0 0 19 19"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            y="16.5104"
+            width="23"
+            height="3"
+            rx="1.5"
+            transform="rotate(-45 0 16.5104)"
+            fill="#7653FC"
+          />
+          <rect
+            x="2.25305"
+            width="23"
+            height="3"
+            rx="1.5"
+            transform="rotate(45 2.25305 0)"
+            fill="#7653FC"
+          />
+        </svg>
+      )
+    case IconTypes.menu:
+      return (
+        <svg
+          width="20"
+          height="17"
+          viewBox="0 0 20 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="20" height="3" rx="1.5" fill="#7653FC" />
+          <rect y="7" width="20" height="3" rx="1.5" fill="#7653FC" />
+          <rect y="14" width="20" height="3" rx="1.5" fill="#7653FC" />
         </svg>
       )
   }

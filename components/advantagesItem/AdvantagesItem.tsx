@@ -1,11 +1,12 @@
 import { SvgIcon } from '../svgIcon/SvgIcon'
+import { IconTypes } from '../svgIcon/SvgIcon.props'
 import styles from './AdvantagesItem.module.css'
 import { AdventuresItemProps } from './AdvantagesItem.props'
 
 export const AdvantagesItem = ({ title, descr }: AdventuresItemProps): JSX.Element => {
   return (
     <div className={styles.advantage}>
-      <SvgIcon type="check" />
+      <SvgIcon iconType={IconTypes.check} />
       <div className={styles.title}>
         <p>{title}</p>
       </div>

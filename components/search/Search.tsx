@@ -5,6 +5,8 @@ import { Button } from '../button/Button'
 import { KeyboardEvent, useState } from 'react'
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { useRouter } from 'next/router'
+import { IconTypes } from '../svgIcon/SvgIcon.props'
+import { ButtonIcon } from '../buttonIcon/ButtonIcon'
 
 export const Search = ({ className, children, ...rest }: SearchProps): JSX.Element => {
   const [search, setSearch] = useState<string>('')
@@ -22,7 +24,7 @@ export const Search = ({ className, children, ...rest }: SearchProps): JSX.Eleme
   const handleKeyDown = (event: KeyboardEvent) => event.key === 'Enter' && goToSearch()
 
   return (
-    <div className={`${styles.search} ${className}`} {...rest}>
+    <div className={[styles.search, className].join(' ')} {...rest}>
       <Input
         className={styles.input}
         value={search}
@@ -30,9 +32,12 @@ export const Search = ({ className, children, ...rest }: SearchProps): JSX.Eleme
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKeyDown}
       />
-      <Button appearance="primary" className={styles.button} onClick={goToSearch}>
-        <SvgIcon type="glass" />
-      </Button>
+      <ButtonIcon
+        className={styles.button}
+        icon={IconTypes.glass}
+        appearance="primary"
+        onClick={goToSearch}
+      />
     </div>
   )
 }

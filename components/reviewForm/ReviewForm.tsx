@@ -10,6 +10,7 @@ import { IReviewForm, IReviewSentResponse } from './ReviewForm.interface'
 import axios from 'axios'
 import { API } from '../../helpers/api'
 import { useState } from 'react'
+import { IconTypes } from '../svgIcon/SvgIcon.props'
 
 export const ReviewForm = ({
   productId,
@@ -102,7 +103,11 @@ export const ReviewForm = ({
         <div className={[styles.success, styles.panel].join(' ')}>
           <div className={styles.successTitle}>Ваш отзыв отправлен</div>
           <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
-          <SvgIcon onClick={() => setIsSuccess(false)} type="close" className={styles.close} />
+          <SvgIcon
+            onClick={() => setIsSuccess(false)}
+            iconType={IconTypes.close}
+            className={styles.close}
+          />
         </div>
       )}
       {errorMessage && (
@@ -110,7 +115,7 @@ export const ReviewForm = ({
           Что-то пошло не так, попробуйте обновить страницу
           <SvgIcon
             onClick={() => setErrorMessage(undefined)}
-            type="close"
+            iconType={IconTypes.close}
             className={styles.close}
           />
         </div>

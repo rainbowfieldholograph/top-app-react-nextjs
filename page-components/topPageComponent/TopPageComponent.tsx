@@ -22,8 +22,6 @@ export const TopPageComponent = ({
     sort: SortEnum.Rating,
   })
 
-  const y = useScrollY()
-
   useEffect(() => {
     dispatchSort({ type: 'refresh', initialState: products })
   }, [products])

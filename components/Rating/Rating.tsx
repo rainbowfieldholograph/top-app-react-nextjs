@@ -2,6 +2,7 @@ import { useEffect, useState, KeyboardEvent, Fragment, forwardRef, ForwardedRef 
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { RatingProps } from './Rating.props'
 import styles from './Rating.module.css'
+import { IconTypes } from '../svgIcon/SvgIcon.props'
 
 const MAX_STAR_COUNT = 5
 
@@ -32,7 +33,7 @@ export const Rating = forwardRef(
             onClick={() => onClickStar(index + 1)}
           >
             <SvgIcon
-              type="star"
+              iconType={IconTypes.star}
               tabIndex={isEditable ? 0 : -1}
               onKeyDown={(event: KeyboardEvent<SVGElement>) =>
                 isEditable && handleSpace(index + 1, event)
@@ -55,9 +56,7 @@ export const Rating = forwardRef(
     }
 
     const handleSpace = (index: number, event: KeyboardEvent<SVGElement>) => {
-      if (event.code !== 'Enter' || !setRating) {
-        return
-      }
+      if (event.code !== 'Enter' || !setRating) return
       setRating(index)
     }
 
