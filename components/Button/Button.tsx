@@ -1,5 +1,4 @@
-import { motion, useMotionValue } from 'framer-motion'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { IconTypes } from '../svgIcon/SvgIcon.props'
 import styles from './Button.module.css'

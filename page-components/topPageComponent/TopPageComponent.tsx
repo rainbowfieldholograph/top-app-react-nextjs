@@ -10,7 +10,6 @@ import { SortEnum } from '../../components/sort/Sort.props'
 import { useEffect, useReducer } from 'react'
 import { sortReducer } from './sort.reducer'
 import { Product } from '../../components/product/Product'
-import { useScrollY } from '../../hooks/useScrollY'
 
 export const TopPageComponent = ({
   page,

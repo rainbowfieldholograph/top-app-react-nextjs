@@ -20,7 +20,7 @@ export const HhLevelBlock = ({
       break
   }
   return (
-    <div className={`${styles.wrapper} ${className}`} {...rest}>
+    <div className={[styles.wrapper, className].join(' ')} {...rest}>
       <div className={styles.title}>{title}</div>
       <div className={styles.salaryValue}>{priceRu(salary)}</div>
       <div className={styles.rate}>

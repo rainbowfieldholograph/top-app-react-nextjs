@@ -10,7 +10,7 @@ export const Card = forwardRef(
     return (
       <div
         ref={ref}
-        className={`${styles.card} ${className} ${color === 'blue' && styles.blue}`}
+        className={[styles.card, className, color === 'blue' ? styles.blue : ''].join(' ')}
         {...rest}
       >
         {children}

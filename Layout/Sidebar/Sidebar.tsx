@@ -7,7 +7,7 @@ import { SidebarProps } from './Sidebar.props'
 
 export const Sidebar = ({ className, ...rest }: SidebarProps): JSX.Element => {
   return (
-    <div className={`${styles.sidebar} ${className}`} {...rest}>
+    <div className={[styles.sidebar, className].join(' ')} {...rest}>
       <SvgIcon className={styles.logo} iconType={IconTypes.logo} />
       <Search />
       <Menu />
