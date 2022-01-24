@@ -1,3 +1,5 @@
+import { motion, useMotionValue } from 'framer-motion'
+import { useEffect } from 'react'
 import { SvgIcon } from '../svgIcon/SvgIcon'
 import { IconTypes } from '../svgIcon/SvgIcon.props'
 import styles from './Button.module.css'
@@ -11,7 +13,8 @@ export const Button = ({
   ...rest
 }: ButtonProps): JSX.Element => {
   return (
-    <button
+    <motion.button
+      whileHover={{ scale: 1.05 }}
       className={[
         styles.button,
         className,
@@ -26,6 +29,6 @@ export const Button = ({
           <SvgIcon iconType={IconTypes.arrow} />
         </span>
       )}
-    </button>
+    </motion.button>
   )
 }
