@@ -16,13 +16,14 @@
 }
 
 .block {
-  display: none;
+  overflow: hidden;
 }
 
+/* 
 .blockOpened:last-child {
   margin-bottom: 20px;
 }
 
 .blockOpened {
   display: block;
-}
+} */

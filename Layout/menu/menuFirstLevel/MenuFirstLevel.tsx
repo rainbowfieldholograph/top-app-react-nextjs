@@ -6,7 +6,7 @@ import { MenuSecondLevel } from '../menuSecondLevel/MenuSecondLevel'
 import Link from 'next/link'
 
 export const MenuFirstLevel = ({ firstLevelMenu }: MenuFirstLevelProps): JSX.Element => {
-  const { menu, setMenu, firstCategory } = useContext(AppContext)
+  const { firstCategory } = useContext(AppContext)
   return (
     <>
       {firstLevelMenu.map((menu) => {
@@ -15,7 +15,7 @@ export const MenuFirstLevel = ({ firstLevelMenu }: MenuFirstLevelProps): JSX.Ele
           <div key={menu.route}>
             <Link href={`/${menu.route}`}>
               <a>
-                <div className={`${styles.firstLevel} ${isActive && styles.active}`}>
+                <div className={[styles.firstLevel, isActive ? styles.active : ''].join(' ')}>
                   {menu.icon}
                   <span>{menu.name}</span>
                 </div>

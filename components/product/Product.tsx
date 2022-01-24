@@ -7,15 +7,25 @@ import { Button } from '../button/Button'
 import { declOfNum, priceRu } from '../../helpers/helpers'
 import { Divider } from '../divider/Divider'
 import Image from 'next/image'
-import { Fragment, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Review } from '../review/Review'
 import { ReviewForm } from '../reviewForm/ReviewForm'
 
 export const Product = ({ product, className, ...rest }: ProductProps): JSX.Element => {
+  const reviewRef = useRef<HTMLDivElement>(null)
   const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
+
+  const scrollToReview = () => {
+    setIsReviewOpened(true)
+    reviewRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }
+
   return (
-    <div>
-      <Card className={[styles.product, className].join(' ')}>
+    <div className={className} {...rest}>
+      <Card className={styles.product}>
         <div className={styles.logo}>
           <Image
             className={styles.image}
@@ -50,8 +60,10 @@ export const Product = ({ product, className, ...rest }: ProductProps): JSX.Elem
         <div className={styles.priceTitle}>цена</div>
         <div className={styles.creditTitle}>в кредит</div>
         <div className={styles.rateTitle}>
-          {product.reviewCount}{' '}
-          {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+          <a href="#ref" onClick={scrollToReview}>
+            {product.reviewCount}{' '}
+            {declOfNum(product.reviewCount, ['отзыв', 'отзыва', 'отзывов'])}
+          </a>
         </div>
         <Divider className={styles.hr} />
         <div className={styles.description}>{product.description}</div>
@@ -92,6 +104,8 @@ export const Product = ({ product, className, ...rest }: ProductProps): JSX.Elem
         </div>
       </Card>
       <Card
+        color="blue"
+        ref={reviewRef}
         className={[styles.reviews, isReviewOpened ? styles.opened : styles.closed].join(' ')}
       >
         {product.reviews.map((r) => (

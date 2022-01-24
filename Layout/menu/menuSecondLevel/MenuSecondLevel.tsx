@@ -4,10 +4,22 @@ import { MenuSecondLevelProps } from './MenuSecondLevel.props'
 import styles from './MenuSecondLevel.module.css'
 import { MenuThirdLevel } from '../menuThirdLevel/MenuThirdLevel'
 import { useRouter } from 'next/router'
+import { motion } from 'framer-motion'
 
 export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
   const { menu, setMenu } = useContext(AppContext)
   const router = useRouter()
+
+  const animationVariants = {
+    visible: {
+      transition: {
+        marginBottom: 20,
+        when: 'beforeChildren',
+        staggerChildren: 0.1,
+      },
+    },
+    hidden: { marginBottom: 0 },
+  }
 
   const openSecondLevel = (secondCategory: string) => {
     setMenu &&
@@ -35,9 +47,15 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
             >
               {m._id.secondCategory}
             </div>
-            <div className={`${styles.block} ${m.isOpened && styles.blockOpened}`}>
+            <motion.div
+              layout
+              className={styles.block}
+              variants={animationVariants}
+              initial={m.isOpened ? 'visible' : 'hidden'}
+              animate={m.isOpened ? 'visible' : 'hidden'}
+            >
               <MenuThirdLevel pages={m.pages} route={menuItem.route} />
-            </div>
+            </motion.div>
           </div>
         )
       })}
