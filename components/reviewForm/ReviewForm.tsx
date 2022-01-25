@@ -14,6 +14,7 @@ import { IconTypes } from '../svgIcon/SvgIcon.props'
 
 export const ReviewForm = ({
   productId,
+  isOpened,
   className,
   ...rest
 }: ReviewFormProps): JSX.Element => {
@@ -56,6 +57,7 @@ export const ReviewForm = ({
           {...register('name', { required: { value: true, message: 'Заполните имя' } })}
           error={errors.name}
           placeholder="Имя"
+          tabIndex={isOpened ? 0 : -1}
         />
         <Input
           {...register('title', {
@@ -64,6 +66,7 @@ export const ReviewForm = ({
           error={errors.title}
           placeholder="Заголовок отзыва"
           className={styles.input}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.rating}>
           <Controller
@@ -79,6 +82,7 @@ export const ReviewForm = ({
                   rating={field.value}
                   setRating={field.onChange}
                   error={errors.rating}
+                  tabIndex={isOpened ? 0 : -1}
                 />
               </>
             )}
@@ -91,9 +95,12 @@ export const ReviewForm = ({
           placeholder="Текст отзыва"
           className={styles.description}
           error={errors.description}
+          tabIndex={isOpened ? 0 : -1}
         />
         <div className={styles.submit}>
-          <Button appearance="primary">Отправить</Button>
+          <Button appearance="primary" tabIndex={isOpened ? 0 : -1}>
+            Отправить
+          </Button>
           <span className={styles.info}>
             * Перед публикацие отзыв пройдет предварительную модерацию и проверку
           </span>

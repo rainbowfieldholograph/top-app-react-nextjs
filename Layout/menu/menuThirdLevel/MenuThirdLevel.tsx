@@ -4,7 +4,11 @@ import { useRouter } from 'next/router'
 import styles from './MenuThirdLevel.module.css'
 import { MenuThirdLevelProps } from './MenuThirdLevel.props'
 
-export const MenuThirdLevel = ({ pages, route }: MenuThirdLevelProps): JSX.Element => {
+export const MenuThirdLevel = ({
+  pages,
+  route,
+  isOpened,
+}: MenuThirdLevelProps): JSX.Element => {
   const router = useRouter()
 
   const animationChildren = {
@@ -20,6 +24,7 @@ export const MenuThirdLevel = ({ pages, route }: MenuThirdLevelProps): JSX.Eleme
           <motion.div key={p._id} variants={animationChildren}>
             <Link href={routePath}>
               <a
+                tabIndex={isOpened ? 0 : -1}
                 className={[
                   styles.thirdLevel,
                   routePath === router.asPath ? styles.active : '',

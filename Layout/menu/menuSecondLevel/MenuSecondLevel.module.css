@@ -5,7 +5,6 @@
   color: var(--gray-dark);
   font-weight: 300;
   font-size: 12px;
-  line-height: 16px;
 }
 
 .wrapper {
@@ -18,12 +17,3 @@
 .block {
   overflow: hidden;
 }
-
-/* 
-.blockOpened:last-child {
-  margin-bottom: 20px;
-}
-
-.blockOpened {
-  display: block;
-} */

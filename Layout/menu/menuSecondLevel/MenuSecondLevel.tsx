@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, KeyboardEvent } from 'react'
 import { AppContext } from '../../../context/app.context'
 import { MenuSecondLevelProps } from './MenuSecondLevel.props'
 import styles from './MenuSecondLevel.module.css'
@@ -31,6 +31,13 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
       )
   }
 
+  const openSecondLevelKey = (key: KeyboardEvent, secondCategory: string) => {
+    if (key.code === 'Space' || key.code === 'Enter') {
+      key.preventDefault()
+      openSecondLevel(secondCategory)
+    }
+  }
+
   return (
     <div className={styles.wrapper}>
       {menu.map((m) => {
@@ -40,8 +47,10 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
         return (
           <div key={m._id.secondCategory}>
             <div
+              tabIndex={0}
               className={styles.secondLevel}
               onClick={() => openSecondLevel(m._id.secondCategory)}
+              onKeyDown={(key: KeyboardEvent) => openSecondLevelKey(key, m._id.secondCategory)}
             >
               {m._id.secondCategory}
             </div>
@@ -52,7 +61,11 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
               initial={m.isOpened ? 'visible' : 'hidden'}
               animate={m.isOpened ? 'visible' : 'hidden'}
             >
-              <MenuThirdLevel pages={m.pages} route={menuItem.route} />
+              <MenuThirdLevel
+                pages={m.pages}
+                route={menuItem.route}
+                isOpened={m.isOpened ?? false}
+              />
             </motion.div>
           </div>
         )
