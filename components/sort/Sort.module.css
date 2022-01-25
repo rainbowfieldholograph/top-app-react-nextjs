@@ -13,20 +13,22 @@
 }
 
 .sort {
-  display: inline-block;
   display: grid;
   grid-template-columns: auto auto;
   gap: 40px;
 }
 
-.sort span {
+.sort button {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  outline-offset: 4px;
+  background-color: transparent;
+  font-size: 16px;
 }
 
-.sort span:not(.active) {
+.sort button:not(.active) {
   grid-template-columns: 1fr;
 }
