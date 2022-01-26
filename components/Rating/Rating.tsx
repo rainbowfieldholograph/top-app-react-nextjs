@@ -39,7 +39,7 @@ export const Rating = forwardRef(
     const computeFocus = (r: number, index: number): number => {
       if (!isEditable) return -1
       if (!rating && index === 0) return tabIndex ?? 0
-      if (rating === index + 1) return tabIndex ?? 0
+      if (r === index + 1) return tabIndex ?? 0
       return -1
     }
 
@@ -49,8 +49,8 @@ export const Rating = forwardRef(
           <span
             className={[
               styles.star,
-              index < currentRating && styles.filled,
-              isEditable && styles.editable,
+              index < currentRating ? styles.filled : '',
+              isEditable ? styles.editable : '',
             ].join(' ')}
             onMouseEnter={() => changeDisplay(index + 1)}
             onMouseLeave={() => changeDisplay(rating)}
@@ -58,6 +58,12 @@ export const Rating = forwardRef(
             tabIndex={computeFocus(rating, index)}
             onKeyDown={handleKey}
             ref={(r) => ratingArrayRef.current?.push(r)}
+            role={isEditable ? 'slider' : ''}
+            aria-valuenow={rating}
+            aria-valuemax={MAX_STAR_COUNT}
+            aria-valuemin={1}
+            aria-invalid={!!error}
+            aria-label={isEditable ? 'Укажите рейтинг' : `рейтинг ${rating}`}
           >
             <SvgIcon iconType={IconTypes.star} />
           </span>
@@ -97,17 +103,19 @@ export const Rating = forwardRef(
     }
 
     return (
-      <div className={styles.wrapper}>
-        <div
-          className={[styles.starsWrapper, className, error && styles.error].join(' ')}
-          ref={ref}
-          {...rest}
-        >
-          {ratingArray.map((rating, index) => (
-            <Fragment key={index}>{rating}</Fragment>
-          ))}
-        </div>
-        {error && <span className={styles.errorMsg}>{error.message}</span>}
+      <div
+        className={[styles.wrapper, className, error ? styles.error : ''].join(' ')}
+        {...rest}
+        ref={ref}
+      >
+        {ratingArray.map((rating, index) => (
+          <Fragment key={index}>{rating}</Fragment>
+        ))}
+        {error && (
+          <p role="alert" className={styles.errorMsg}>
+            {error.message}
+          </p>
+        )}
       </div>
     )
   }

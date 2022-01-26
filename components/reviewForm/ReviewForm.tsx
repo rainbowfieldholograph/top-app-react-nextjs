@@ -24,6 +24,7 @@ export const ReviewForm = ({
     handleSubmit,
     formState: { errors },
     reset,
+    clearErrors,
   } = useForm<IReviewForm>()
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
@@ -49,6 +50,8 @@ export const ReviewForm = ({
     }
   }
 
+  const tabIndexIfOpened = isOpened ? 0 : -1
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={[styles.reviewForm, className].join(' ')} {...rest}>
@@ -57,7 +60,8 @@ export const ReviewForm = ({
           {...register('name', { required: { value: true, message: 'Заполните имя' } })}
           error={errors.name}
           placeholder="Имя"
-          tabIndex={isOpened ? 0 : -1}
+          tabIndex={tabIndexIfOpened}
+          aria-invalid={!!errors.name}
         />
         <Input
           {...register('title', {
@@ -66,25 +70,24 @@ export const ReviewForm = ({
           error={errors.title}
           placeholder="Заголовок отзыва"
           className={styles.input}
-          tabIndex={isOpened ? 0 : -1}
+          tabIndex={tabIndexIfOpened}
+          aria-invalid={!!errors.title}
         />
         <div className={styles.rating}>
+          <span className={errors.rating && styles.errorText}>Оценка:</span>
           <Controller
             control={control}
             name="rating"
             rules={{ required: { value: true, message: 'Поставьте оценку' } }}
             render={({ field }) => (
-              <>
-                <span className={errors.rating && styles.errorText}>Оценка:</span>
-                <Rating
-                  ref={field.ref}
-                  isEditable
-                  rating={field.value}
-                  setRating={field.onChange}
-                  error={errors.rating}
-                  tabIndex={isOpened ? 0 : -1}
-                />
-              </>
+              <Rating
+                ref={field.ref}
+                isEditable
+                rating={field.value}
+                setRating={field.onChange}
+                error={errors.rating}
+                tabIndex={tabIndexIfOpened}
+              />
             )}
           />
         </div>
@@ -95,10 +98,16 @@ export const ReviewForm = ({
           placeholder="Текст отзыва"
           className={styles.description}
           error={errors.description}
-          tabIndex={isOpened ? 0 : -1}
+          tabIndex={tabIndexIfOpened}
+          aria-label="Текст отзыва"
+          aria-invalid={!!errors.description}
         />
         <div className={styles.submit}>
-          <Button appearance="primary" tabIndex={isOpened ? 0 : -1}>
+          <Button
+            appearance="primary"
+            tabIndex={tabIndexIfOpened}
+            onClick={() => clearErrors()}
+          >
             Отправить
           </Button>
           <span className={styles.info}>
@@ -107,24 +116,28 @@ export const ReviewForm = ({
         </div>
       </div>
       {isSuccess && (
-        <div className={[styles.success, styles.panel].join(' ')}>
-          <div className={styles.successTitle}>Ваш отзыв отправлен</div>
+        <div role="alert" className={[styles.success, styles.panel].join(' ')}>
+          <p className={styles.successTitle}>Ваш отзыв отправлен</p>
           <div>Спасибо, ваш отзыв будет опубликован после проверки</div>
-          <SvgIcon
+          <button
+            aria-label="закрыть оповещение"
             onClick={() => setIsSuccess(false)}
-            iconType={IconTypes.close}
             className={styles.close}
-          />
+          >
+            <SvgIcon iconType={IconTypes.close} />
+          </button>
         </div>
       )}
       {errorMessage && (
         <div className={[styles.error, styles.panel].join(' ')}>
           Что-то пошло не так, попробуйте обновить страницу
-          <SvgIcon
+          <button
+            aria-label="закрыть оповещение"
             onClick={() => setErrorMessage(undefined)}
-            iconType={IconTypes.close}
             className={styles.close}
-          />
+          >
+            <SvgIcon iconType={IconTypes.close} />
+          </button>
         </div>
       )}
     </form>
