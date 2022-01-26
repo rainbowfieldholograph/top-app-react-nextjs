@@ -1,4 +1,4 @@
-import { useContext, KeyboardEvent } from 'react'
+import { useContext, KeyboardEvent, useState } from 'react'
 import { AppContext } from '../../../context/app.context'
 import { MenuSecondLevelProps } from './MenuSecondLevel.props'
 import styles from './MenuSecondLevel.module.css'
@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 
 export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
+  const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>()
   const { menu, setMenu } = useContext(AppContext)
   const router = useRouter()
 
@@ -25,7 +26,10 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
     setMenu &&
       setMenu(
         menu.map((m) => {
-          if (m._id.secondCategory === secondCategory) m.isOpened = !m.isOpened
+          if (m._id.secondCategory === secondCategory) {
+            setAnnounce(m.isOpened ? 'closed' : 'opened')
+            m.isOpened = !m.isOpened
+          }
           return m
         })
       )
@@ -39,22 +43,27 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
   }
 
   return (
-    <div className={styles.wrapper}>
+    <ul className={styles.wrapper}>
+      {announce && (
+        <span role="log" className="visualyHidden">
+          {announce === 'opened' ? 'развёрнуто' : 'свёрнуто'}
+        </span>
+      )}
       {menu.map((m) => {
         if (m.pages.map((p) => p.alias).includes(router.asPath.split('/')[2])) {
           m.isOpened = !m.isOpened
         }
         return (
-          <div key={m._id.secondCategory}>
-            <div
-              tabIndex={0}
-              className={styles.secondLevel}
+          <li key={m._id.secondCategory}>
+            <button
+              className={styles.secondLevelBtn}
               onClick={() => openSecondLevel(m._id.secondCategory)}
               onKeyDown={(key: KeyboardEvent) => openSecondLevelKey(key, m._id.secondCategory)}
+              aria-expanded={m.isOpened}
             >
               {m._id.secondCategory}
-            </div>
-            <motion.div
+            </button>
+            <motion.ul
               layout
               className={styles.block}
               variants={animationVariants}
@@ -66,10 +75,10 @@ export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
                 route={menuItem.route}
                 isOpened={m.isOpened ?? false}
               />
-            </motion.div>
-          </div>
+            </motion.ul>
+          </li>
         )
       })}
-    </div>
+    </ul>
   )
 }

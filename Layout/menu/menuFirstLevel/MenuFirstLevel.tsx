@@ -8,11 +8,11 @@ import Link from 'next/link'
 export const MenuFirstLevel = ({ firstLevelMenu }: MenuFirstLevelProps): JSX.Element => {
   const { firstCategory } = useContext(AppContext)
   return (
-    <>
+    <ul>
       {firstLevelMenu.map((menu) => {
         const isActive = menu.id === firstCategory
         return (
-          <div key={menu.route}>
+          <li key={menu.route} aria-expanden={isActive}>
             <Link href={`/${menu.route}`}>
               <a>
                 <div className={[styles.firstLevel, isActive ? styles.active : ''].join(' ')}>
@@ -22,9 +22,9 @@ export const MenuFirstLevel = ({ firstLevelMenu }: MenuFirstLevelProps): JSX.Ele
               </a>
             </Link>
             {isActive && <MenuSecondLevel menuItem={menu} />}
-          </div>
+          </li>
         )
       })}
-    </>
+    </ul>
   )
 }

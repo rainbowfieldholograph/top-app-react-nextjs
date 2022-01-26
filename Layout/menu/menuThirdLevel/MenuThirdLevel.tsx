@@ -21,7 +21,7 @@ export const MenuThirdLevel = ({
       {pages.map((p) => {
         const routePath = `/${route}/${p.alias}`
         return (
-          <motion.div key={p._id} variants={animationChildren}>
+          <motion.li key={p._id} variants={animationChildren}>
             <Link href={routePath}>
               <a
                 tabIndex={isOpened ? 0 : -1}
@@ -29,11 +29,12 @@ export const MenuThirdLevel = ({
                   styles.thirdLevel,
                   routePath === router.asPath ? styles.active : '',
                 ].join(' ')}
+                aria-current={`/${route}/${p.alias}` === router.asPath ? 'page' : false}
               >
                 {p.category}
               </a>
             </Link>
-          </motion.div>
+          </motion.li>
         )
       })}
     </>

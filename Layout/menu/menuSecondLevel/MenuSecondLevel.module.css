@@ -1,10 +1,12 @@
-.secondLevel {
+.secondLevelBtn {
   margin-bottom: 10px;
   cursor: pointer;
   text-transform: uppercase;
   color: var(--gray-dark);
   font-weight: 300;
   font-size: 12px;
+  background-color: transparent;
+  outline-offset: 0.25rem;
 }
 
 .wrapper {
