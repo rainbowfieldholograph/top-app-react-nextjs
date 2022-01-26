@@ -10,7 +10,6 @@ import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 import { Input } from '../components/input/Input'
 import { Textarea } from '../components/textarea/Textarea'
-import { ReviewForm } from '../components/reviewForm/ReviewForm'
 import { API } from '../helpers/api'
 import { Up } from '../components/up/Up'
 

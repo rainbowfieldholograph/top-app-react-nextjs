@@ -13,6 +13,13 @@
   --font-family: 'Noto Sans KR', sans-serif;
 }
 
+.visualyHidden {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
 body {
   font-family: var(--font-family);
   background-color: #f5f6f8;
