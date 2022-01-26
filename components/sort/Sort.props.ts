@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react'
+import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
 export interface SortProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
@@ -6,7 +6,7 @@ export interface SortProps
   setSort: (sort: SortEnum) => void
 }
 
-export enum SortEnum {
+export const enum SortEnum {
   Rating,
   Price,
 }

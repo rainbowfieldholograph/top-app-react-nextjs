@@ -4,20 +4,23 @@ import { MenuSecondLevelProps } from './MenuSecondLevel.props'
 import styles from './MenuSecondLevel.module.css'
 import { MenuThirdLevel } from '../menuThirdLevel/MenuThirdLevel'
 import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export const MenuSecondLevel = ({ menuItem }: MenuSecondLevelProps) => {
   const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>()
   const { menu, setMenu } = useContext(AppContext)
   const router = useRouter()
+  const shouldReduceMotion = useReducedMotion()
 
   const animationVariants = {
     visible: {
-      transition: {
-        marginBottom: 20,
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
+      transition: shouldReduceMotion
+        ? {}
+        : {
+            marginBottom: 20,
+            when: 'beforeChildren',
+            staggerChildren: 0.1,
+          },
     },
     hidden: { marginBottom: 0 },
   }

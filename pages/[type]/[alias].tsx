@@ -59,6 +59,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({
     return { notFound: true }
   }
 }
+
 interface TopPageProps extends Record<string, unknown> {
   menu: MenuItem[]
   firstCategory: TopLevelCategory

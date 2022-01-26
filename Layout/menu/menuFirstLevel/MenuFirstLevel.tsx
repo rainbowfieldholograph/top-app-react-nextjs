@@ -12,7 +12,7 @@ export const MenuFirstLevel = ({ firstLevelMenu }: MenuFirstLevelProps): JSX.Ele
       {firstLevelMenu.map((menu) => {
         const isActive = menu.id === firstCategory
         return (
-          <li key={menu.route} aria-expanden={isActive}>
+          <li key={menu.route} aria-expanded={isActive}>
             <Link href={`/${menu.route}`}>
               <a>
                 <div className={[styles.firstLevel, isActive ? styles.active : ''].join(' ')}>

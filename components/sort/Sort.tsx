@@ -19,7 +19,7 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Ele
         <SvgIcon className={styles.sortIcon} iconType={IconTypes.sort} /> По рейтингу
       </button>
       <button
-        tabIndex={0}
+        id="price"
         onClick={() => setSort(SortEnum.Price)}
         className={sort === SortEnum.Price ? styles.active : ''}
         aria-selected={sort === SortEnum.Price}

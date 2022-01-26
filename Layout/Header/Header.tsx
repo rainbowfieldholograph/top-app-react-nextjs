@@ -3,13 +3,14 @@ import styles from './Header.module.css'
 import { SvgIcon } from '../../components/svgIcon/SvgIcon'
 import { IconTypes } from '../../components/svgIcon/SvgIcon.props'
 import { ButtonIcon } from '../../components/buttonIcon/ButtonIcon'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Sidebar } from '../sidebar/Sidebar'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export const Header = ({ className, ...rest }: HeaderProps): JSX.Element => {
   const [isOpened, setIsOpened] = useState<boolean>(false)
+  const shouldReduceMotion = useReducedMotion()
   const router = useRouter()
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export const Header = ({ className, ...rest }: HeaderProps): JSX.Element => {
 
   const animationVariants = {
     opened: { opacity: 1, x: 0, transition: { stiffness: 20 } },
-    closed: { opacity: 0, x: '100%' },
+    closed: { opacity: shouldReduceMotion ? 1 : 0, x: '100%' },
   }
 
   return (

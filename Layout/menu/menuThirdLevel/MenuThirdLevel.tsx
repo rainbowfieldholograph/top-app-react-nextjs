@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import styles from './MenuThirdLevel.module.css'
@@ -10,10 +10,11 @@ export const MenuThirdLevel = ({
   isOpened,
 }: MenuThirdLevelProps): JSX.Element => {
   const router = useRouter()
+  const shouldReduceMotion = useReducedMotion()
 
   const animationChildren = {
     visible: { opacity: 1, height: '100%' },
-    hidden: { opacity: 0, height: '0px' },
+    hidden: { opacity: shouldReduceMotion ? 1 : 0, height: '0px' },
   }
 
   return (
