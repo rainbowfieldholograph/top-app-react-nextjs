@@ -8,7 +8,6 @@ import { AppContextProvider, IAppContext } from '../context/app.context'
 import { Up } from '../components/up/Up'
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
-  const [isSkipLinkDisplayed, setIsSkipLinkDisplayed] = useState<boolean>(false)
   const bodyRef = useRef<HTMLDivElement>(null)
 
   const skipContentAction = (key: KeyboardEvent) => {
@@ -16,23 +15,17 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
       key.preventDefault()
       bodyRef.current?.focus()
     }
-    setIsSkipLinkDisplayed(false)
   }
 
   return (
     <div className={styles.wrapper}>
-      <div
-        onFocus={() => setIsSkipLinkDisplayed(true)}
-        tabIndex={1}
-        className={[styles.skipLink, isSkipLinkDisplayed ? styles.displayed : ''].join(' ')}
-        onKeyDown={skipContentAction}
-      >
+      <button tabIndex={1} className={styles.skipLink} onKeyDown={skipContentAction}>
         Сразу к содержанию
-      </div>
+      </button>
       <Header className={styles.header} />
       <Sidebar className={styles.sidebar} />
       <main className={styles.body} ref={bodyRef} tabIndex={0}>
-        <div>{children}</div>
+        {children}
       </main>
       <Footer className={styles.footer} />
       <Up />
