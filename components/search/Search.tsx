@@ -35,6 +35,7 @@ export const Search = ({ className, children, ...rest }: SearchProps): JSX.Eleme
         icon={IconTypes.glass}
         appearance="primary"
         onClick={goToSearch}
+        aria-label="Искать по сайту"
       />
     </div>
   )
