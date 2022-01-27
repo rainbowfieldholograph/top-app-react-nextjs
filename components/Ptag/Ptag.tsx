@@ -7,7 +7,7 @@ export const Ptag = ({
   children,
   ...rest
 }: PtagProps): JSX.Element => {
-  let ptagStyles
+  let ptagStyles: string
   switch (size) {
     case 'small':
       ptagStyles = styles.small
@@ -19,7 +19,7 @@ export const Ptag = ({
       ptagStyles = styles.large
       break
     default:
-      break
+      return <></>
   }
   return (
     <p className={[ptagStyles, className].join(' ')} {...rest}>
