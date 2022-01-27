@@ -24,6 +24,7 @@ export const Up = (): JSX.Element => {
         onClick={scrollToTop}
         appearance="white"
         icon={IconTypes.up}
+        aria-label="Наверх"
       />
     </motion.div>
   )

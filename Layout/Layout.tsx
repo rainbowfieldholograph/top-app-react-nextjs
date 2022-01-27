@@ -19,7 +19,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
 
   return (
     <div className={styles.wrapper}>
-      <button tabIndex={1} className={styles.skipLink} onKeyDown={skipContentAction}>
+      <button className={styles.skipLink} onKeyDown={skipContentAction}>
         Сразу к содержанию
       </button>
       <Header className={styles.header} />
