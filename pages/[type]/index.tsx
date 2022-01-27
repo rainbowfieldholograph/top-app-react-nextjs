@@ -2,7 +2,7 @@ import axios from 'axios'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
 import { API } from '../../helpers/api'
-import { firstLevelMenu } from '../../helpers/helpers'
+import { firstLevelMenu } from '../../helpers/Helpers'
 import { MenuItem } from '../../interfaces/menu.interface'
 import { withLayout } from '../../layout/layout/Layout'
 

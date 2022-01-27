@@ -1,4 +1,4 @@
-import { firstLevelMenu } from '../../helpers/helpers'
+import { firstLevelMenu } from '../../helpers/Helpers'
 import styles from './Menu.module.css'
 import { MenuFirstLevel } from './menuFirstLevel/MenuFirstLevel'
 

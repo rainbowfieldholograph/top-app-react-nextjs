@@ -1,8 +1,8 @@
 import { HhLevelsBlockProps, LevelsEnum } from './HhLevelBlock.props'
 import styles from './HhLevelBlock.module.css'
 import { SvgIcon } from '../svgIcon/SvgIcon'
-import { priceRu } from '../../helpers/helpers'
 import { IconTypes } from '../svgIcon/SvgIcon.props'
+import { priceRu } from '../../helpers/Helpers'
 
 export const HhLevelBlock = ({
   salary,
