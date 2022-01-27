@@ -14,10 +14,7 @@ import { motion } from 'framer-motion'
 
 export const Product = motion(
   forwardRef(
-    (
-      { product, className, ...rest }: ProductProps,
-      ref: ForwardedRef<HTMLDivElement>
-    ): JSX.Element => {
+    ({ product, className, ...rest }: ProductProps, ref: ForwardedRef<HTMLDivElement>) => {
       const reviewRef = useRef<HTMLDivElement>(null)
       const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false)
 
