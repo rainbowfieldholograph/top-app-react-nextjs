@@ -15,7 +15,6 @@ import { Up } from '../components/up/Up'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
-
   return (
     <>
       <Up />

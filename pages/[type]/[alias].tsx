@@ -9,9 +9,13 @@ import { firstLevelMenu } from '../../helpers/helpers'
 import { TopPageComponent } from '../../page-components/topPageComponent/TopPageComponent'
 import { API } from '../../helpers/api'
 import Head from 'next/head'
-import { title } from 'process'
+import { Error404 } from '../404'
 
 const TopPage = ({ firstCategory, page, products }: TopPageProps): JSX.Element => {
+  if (!page || !products) {
+    return <Error404 />
+  }
+
   return (
     <>
       <Head>

@@ -22,7 +22,7 @@ export const HhLevelBlock = ({
   return (
     <div className={[styles.wrapper, className].join(' ')} {...rest}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.salaryValue}>{priceRu(salary)}</div>
+      <div className={styles.salaryValue}>{salary && priceRu(salary)}</div>
       <div className={styles.rate}>
         <SvgIcon className={styles.filled} iconType={IconTypes.rate} />
         <SvgIcon

@@ -51,19 +51,20 @@ export const Product = motion(
             <div className={styles.price}>
               <span>
                 <p className="visualyHidden">цена</p>
-                {priceRu(product.price)}
+                {product?.price && priceRu(product.price)}
               </span>
               {product.oldPrice && (
                 <Tag className={styles.oldPrice} color="green">
                   <p className="visualyHidden">скидка</p>
-                  {priceRu(product.price - product.oldPrice)}
+                  {product?.price && priceRu(product.price - product.oldPrice)}
                 </Tag>
               )}
             </div>
             <div className={styles.credit}>
               <span>
                 <p className="visualyHidden">кредит</p>
-                {priceRu(product.credit)}/<span className={styles.month}>мес</span>
+                {product.credit && priceRu(product.credit)}/
+                <span className={styles.month}>мес</span>
               </span>
             </div>
             <div className={styles.rating}>
