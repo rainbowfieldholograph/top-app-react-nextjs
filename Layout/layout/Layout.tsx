@@ -1,11 +1,11 @@
 import { FC, KeyboardEvent, useRef } from 'react'
-import { Footer } from './footer/Footer'
-import { Header } from './header/Header'
-import { Sidebar } from './sidebar/Sidebar'
+import { Footer } from '../footer/Footer'
+import { Header } from '../header/Header'
+import { Sidebar } from '../sidebar/Sidebar'
 import { LayoutProps } from './Layout.props'
 import styles from './Layout.module.css'
-import { AppContextProvider, IAppContext } from '../context/app.context'
-import { Up } from '../components/up/Up'
+import { AppContextProvider, IAppContext } from '../../context/app.context'
+import { Up } from '../../components/up/Up'
 
 const Layout = ({ children }: LayoutProps): JSX.Element => {
   const bodyRef = useRef<HTMLDivElement>(null)

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Htag } from '../components/htag/Htag'
-import { withLayout } from '../layout/Layout'
+import { withLayout } from '../layout/layout/Layout'
 
 export const Error404 = (): JSX.Element => {
   return (

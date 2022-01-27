@@ -4,7 +4,7 @@ import { ParsedUrlQuery } from 'querystring'
 import { API } from '../../helpers/api'
 import { firstLevelMenu } from '../../helpers/helpers'
 import { MenuItem } from '../../interfaces/menu.interface'
-import { withLayout } from '../../layout/Layout'
+import { withLayout } from '../../layout/layout/Layout'
 
 const Type = ({ firstCategory }: TypeProps): JSX.Element => {
   return <div>Type: {firstCategory}</div>
