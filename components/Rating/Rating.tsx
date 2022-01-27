@@ -34,6 +34,7 @@ export const Rating = forwardRef(
 
     useEffect(() => {
       constructRating(rating)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rating, tabIndex])
 
     const computeFocus = (r: number, index: number): number => {
@@ -52,6 +53,7 @@ export const Rating = forwardRef(
               index < currentRating ? styles.filled : '',
               isEditable ? styles.editable : '',
             ].join(' ')}
+            key={index}
             onMouseEnter={() => changeDisplay(index + 1)}
             onMouseLeave={() => changeDisplay(rating)}
             onClick={() => onClickStar(index + 1)}
