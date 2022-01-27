@@ -17,19 +17,16 @@ export const sortReducer = (
 ): SortReducerState => {
   switch (action.type) {
     case SortEnum.Rating:
-      console.log('rating sort')
       return {
         sortMethod: SortEnum.Rating,
         products: state.products.sort((a, b) => (a.initialRating > b.initialRating ? -1 : 1)),
       }
     case SortEnum.Price:
-      console.log('price sort')
       return {
         sortMethod: SortEnum.Price,
         products: state.products.sort((a, b) => (a.price > b.price ? 1 : -1)),
       }
     case 'refresh':
-      console.log('refresh')
       return {
         sortMethod: SortEnum.Rating,
         products: action.initialState,

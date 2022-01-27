@@ -29,14 +29,12 @@ export const TopPageComponent = ({
 
   useEffect(() => {
     dispatchSort({ type: 'refresh', initialState: products })
+    dispatchSort({ type: SortEnum.Rating, initialState: products })
   }, [products])
 
   const setSort = (sort: SortEnum) => {
     dispatchSort({ type: sort })
   }
-
-  console.log(sort)
-  console.log(sortedProducts)
 
   return (
     <div className={styles.wrapper}>
