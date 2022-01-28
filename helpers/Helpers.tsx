@@ -10,24 +10,24 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
     icon: <SvgIcon iconType={IconTypes.courses} />,
     id: TopLevelCategory.Courses,
   },
-  {
-    route: 'services',
-    name: 'Сервисы',
-    icon: <SvgIcon iconType={IconTypes.services} />,
-    id: TopLevelCategory.Services,
-  },
-  {
-    route: 'books',
-    name: 'Книги',
-    icon: <SvgIcon iconType={IconTypes.books} />,
-    id: TopLevelCategory.Books,
-  },
-  {
-    route: 'products',
-    name: 'Продукты',
-    icon: <SvgIcon iconType={IconTypes.product} />,
-    id: TopLevelCategory.Products,
-  },
+  // {
+  //   route: 'services',
+  //   name: 'Сервисы',
+  //   icon: <SvgIcon iconType={IconTypes.services} />,
+  //   id: TopLevelCategory.Services,
+  // },
+  // {
+  //   route: 'books',
+  //   name: 'Книги',
+  //   icon: <SvgIcon iconType={IconTypes.books} />,
+  //   id: TopLevelCategory.Books,
+  // },
+  // {
+  //   route: 'products',
+  //   name: 'Продукты',
+  //   icon: <SvgIcon iconType={IconTypes.product} />,
+  //   id: TopLevelCategory.Products,
+  // },
 ]
 
 export const priceRu = (price: number): string => {

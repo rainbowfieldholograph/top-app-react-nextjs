@@ -69,6 +69,7 @@ input::-ms-clear {
 }
 button {
   cursor: pointer;
+  background: inherit;
 }
 button::-moz-focus-inner {
   padding: 0;

@@ -3,6 +3,7 @@ export enum TopLevelCategory {
   Services,
   Books,
   Products,
+  NotSelected,
 }
 
 export interface TopPageModel {
