@@ -1,13 +1,28 @@
 import { GetStaticProps } from 'next'
-import { useState } from 'react'
 import { withLayout } from '../layout/layout/Layout'
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
 import { API } from '../helpers/api'
+import { Htag } from '../components/htag/Htag'
+import { Ptag } from '../components/ptag/Ptag'
+import Image from 'next/image'
+import styles from './index.module.css'
+import promoImage from '../img/promo.png'
 
-function Home({ menu }: HomeProps): JSX.Element {
-  const [rating, setRating] = useState<number>(0)
-  return <></>
+function Home({}: HomeProps): JSX.Element {
+  return (
+    <div className={styles.wrapper}>
+      <Htag className={styles.heading} tag="h1">
+        Обучайся с нами!
+      </Htag>
+      <div className={styles.content}>
+        <Ptag size="large">
+          Подборки лучших курсов и рейтинги, основанные на реальных отзывах.
+        </Ptag>
+        <Image className={styles.image} src={promoImage} alt="promo" />
+      </div>
+    </div>
+  )
 }
 
 export default withLayout(Home)
