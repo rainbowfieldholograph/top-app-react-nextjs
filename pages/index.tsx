@@ -1,49 +1,13 @@
 import { GetStaticProps } from 'next'
 import { useState } from 'react'
-import { Button } from '../components/button/Button'
-import { Htag } from '../components/htag/Htag'
-import { Ptag } from '../components/ptag/Ptag'
-import { Rating } from '../components/rating/Rating'
-import { Tag } from '../components/tag/Tag'
 import { withLayout } from '../layout/layout/Layout'
 import axios from 'axios'
 import { MenuItem } from '../interfaces/menu.interface'
-import { Input } from '../components/input/Input'
-import { Textarea } from '../components/textarea/Textarea'
 import { API } from '../helpers/api'
-import { Up } from '../components/up/Up'
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
-  return (
-    <>
-      <Up />
-      <Htag tag="h1">ahhahahha</Htag>
-      <Button appearance="ghost" className="sdajhsdabks">
-        Кнопка
-      </Button>
-      <Button appearance="primary" arrow="right">
-        Кнопка
-      </Button>
-      <Ptag size="small">hello</Ptag>
-      <Tag size="small">Ghost s</Tag>
-      <Tag size="medium" color="red">
-        Red m
-      </Tag>
-      <Tag size="medium" color="green">
-        Green m
-      </Tag>
-      <Tag size="medium" color="primary">
-        Primary m
-      </Tag>
-      <Tag size="medium" color="gray">
-        Gray m
-      </Tag>
-      <Rating rating={rating} setRating={setRating} isEditable={true} />
-      <Input placeholder="ok" />
-      <Textarea />
-    </>
-  )
+  return <></>
 }
 
 export default withLayout(Home)
